@@ -17,6 +17,14 @@ protocol TodoTableViewCellDelegate {
 class TodoTableViewCell: UITableViewCell {
     
     // MARK: - Properties
+    var todo: Todo? {
+        didSet {
+            
+            if let title: String = self.todo?.title {
+                print("Set up todo of cell : \(title != "" ? title : "(임시)")")
+            }
+        }
+    }
     var delegate: TodoTableViewCellDelegate?
     
     // MARK: - IBOutlets
@@ -43,6 +51,12 @@ class TodoTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         // row 선택에 대한 동작은 처리하지 않는다.
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.todo = nil
     }
 }
 

@@ -119,7 +119,7 @@ extension ListViewController: UITextFieldDelegate {
             self.successButton.isEnabled = false
             return
         }
-        
+        self.list?.title = title
         self.successButton.isEnabled = true
     }
 }

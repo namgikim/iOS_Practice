@@ -144,7 +144,7 @@ class TodosInTableViewController: UIViewController {
             
             guard let cell: TodoTableViewCell = sender as? TodoTableViewCell else { return }
             
-            guard let indexPath: IndexPath = self.todosTableView.indexPath(for: cell) else { return }
+//            guard let indexPath: IndexPath = self.todosTableView.indexPath(for: cell) else { return }
             
             // tableView(_:accessoryButtonTappedForRowWith:) 에서 동작하고자 했던 로직을 이곳으로 이동시킴. (-> prepare()이 더 먼저 동작함.)
             if cell.titleTextView.text.isEmpty == true {
@@ -152,9 +152,14 @@ class TodosInTableViewController: UIViewController {
             }
             self.view.endEditing(true)
             
-            let todo: Todo = self.todos[indexPath.row]
-            viewController.list = self.list
-            viewController.todo = todo
+//            let todo: Todo = self.todos[indexPath.row]
+            if let todo: Todo = cell.todo {
+                viewController.list = self.list
+                viewController.todo = todo
+                
+            } else {
+                print("[Error] Todo of cell is nil...")
+            }
         }
     }
 
@@ -179,7 +184,9 @@ extension TodosInTableViewController: UITableViewDelegate, UITableViewDataSource
 
         let cell: TodoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! TodoTableViewCell
         
+        // Set properties
         cell.delegate = self
+        cell.todo = self.todos[indexPath.row]
 
         if self.todos.count <= indexPath.row { return cell }
         
@@ -824,6 +831,7 @@ extension TodosInTableViewController: TodoTableViewCellDelegate {
                     guard let indexPath: IndexPath = self.todosTableView.indexPath(for: cell) else { return }
                     
                     // 3초 뒤에 이 구문이 실행되는 시점에서 완료버튼 누른 알림을 찾는다.
+                    // - 그 전에 먼저 reload가 되었다면, 없을 수도 있다.
                     if cell.successButton.isSelected == true {
                         deleteIndexPaths.append(indexPath)
                     }
