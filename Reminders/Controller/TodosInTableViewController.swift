@@ -41,7 +41,7 @@ class TodosInTableViewController: UIViewController {
         // 최소 1개 이상의 목록이 필요함.
         if List.allListWithSort().count == 0 {
             
-            popInformMsgAlert(title: "목록 없음",
+            popInformMsgAlert(title: "목록 없음", 
                               message: "먼저 목록을 생성한 후 다시 시도하십시오.") { (alert) in
                 self.present(alert, animated: true, completion: nil)
             } dismiss: {
