@@ -1,11 +1,8 @@
 # iOS_Practice
 
-### Reminder
+## Reminder
 
-[설명]
-- 아이폰의 '미리 알림' 앱을 따라 일부 기능을 구현.
-   
-[Directory]
-- Reminder / Reminder.xcodeproj
+- [설명] 아이폰의 '미리 알림' 앱을 따라 일부 기능을 구현.
+- [Directory] Reminder / Reminder.xcodeproj
 
 ***
