@@ -64,7 +64,7 @@ class ListInTableViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // 알림 목록으로 이동
-        if let todosInTableViewController = segue.destination as? TodosInTableViewController {
+        if let todosInTableViewController = segue.destination as?  TodosInTableViewController {
             
             if segue.identifier == "showTodoList" {
             
