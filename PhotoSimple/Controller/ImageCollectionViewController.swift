@@ -58,7 +58,7 @@ extension ImageCollectionViewController {
         flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth)
 //        flowLayout.footerReferenceSize = CGSize(width: halfWidth * 3, height: 70)
 //        flowLayout.sectionFootersPinToVisibleBounds = true
-        self.imageCollectionView.collectionViewLayout = flowLayout
+        self.imageCollectionView.collectionViewLayout = flowLayout 
     }
 }
 
